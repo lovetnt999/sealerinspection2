@@ -290,8 +290,27 @@
     <Compile Include="Form\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\SealerBeadMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DonutChartPanel.cs" />
+    <Compile Include="Form\SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\HistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SealerBeadMainForm.Designer.cs">
+      <DependentUpon>SealerBeadMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\HistoryForm.Designer.cs">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgramConfig.cs" />

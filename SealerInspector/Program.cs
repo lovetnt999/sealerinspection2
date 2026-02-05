@@ -38,7 +38,7 @@ namespace AvisSealer
             System.Reflection.Assembly asm = typeof(DevExpress.UserSkins.AIES).Assembly;
             DevExpress.Skins.SkinManager.Default.RegisterAssembly(asm);
             
-            Application.Run(new MainForm());
+            Application.Run(new SealerBeadMainForm());
         }
     }
 }
