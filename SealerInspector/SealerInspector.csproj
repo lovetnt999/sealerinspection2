@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props" Condition="Exists('..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props')" />
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.DirectML.1.23.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.DirectML.props" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.DirectML.1.23.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.DirectML.props')" />
+  <Import Project="..\packages\Microsoft.AI.DirectML.1.15.4\build\Microsoft.AI.DirectML.props" Condition="Exists('..\packages\Microsoft.AI.DirectML.1.15.4\build\Microsoft.AI.DirectML.props')" />
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E1D02DA1-7F50-4634-B666-5E41CFF5DED5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AvisSealer</RootNamespace>
+    <AssemblyName>LPRF</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>게시\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>_avis_sealer.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AIES">
+      <HintPath>.\AIES.dll</HintPath>
+    </Reference>
+    <Reference Include="AjinUtil">
+      <HintPath>.\AjinUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.BonusSkins.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v15.1.Core, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Charts.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Data.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.DataAccess.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v15.1.UI, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.DataAccess.v15.1.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Office.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Printing.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.RichEdit.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Sparkline.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Spreadsheet.v15.1.Core, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Spreadsheet.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Utils.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v15.1.UI, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Utils.v15.1.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraBars.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraCharts.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v15.1.UI, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraCharts.v15.1.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraEditors.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraGrid.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraLayout.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraNavBar.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraPrinting.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraReports.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraRichEdit.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraSpreadsheet.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraSpreadsheet.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.XtraTreeList.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.57.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.57.0\lib\net45\Google.Apis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.57.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.57.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.57.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.57.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.57.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.57.0\lib\net45\Google.Apis.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v3, Version=1.57.0.2789, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Drive.v3.1.57.0.2789\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.57.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.57.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Sheets.v4, Version=1.57.0.2826, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Sheets.v4.1.57.0.2826\lib\net45\Google.Apis.Sheets.v4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ML.OnnxRuntime, Version=1.23.2.0, Culture=neutral, PublicKeyToken=f27f157f0a5b7bb6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ML.OnnxRuntime.Managed.1.23.2\lib\netstandard2.0\Microsoft.ML.OnnxRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>datas\Server\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.11.0.20250507\lib\net48\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2020.0.2.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2020.0.2\lib\net40\Renci.SshNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SpinnakerNET_v140, Version=2.3.0.77, Culture=neutral, PublicKeyToken=e3ed2bf1f221d241, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Tools\Camera2D\FlyCapture\x64\SpinnakerNET_v140.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonRepository.cs" />
+    <Compile Include="datas\MainGrid.cs" />
+    <Compile Include="datas\Server\ProductionInfo.cs" />
+    <Compile Include="datas\Server\Results.cs" />
+    <Compile Include="datas\Server\Standards.cs" />
+    <Compile Include="Form\DxItemDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DxItemDetailForm.Designer.cs">
+      <DependentUpon>DxItemDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DXItemExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DXItemExcel.designer.cs">
+      <DependentUpon>DXItemExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DxItemSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DxItemSearchForm.Designer.cs">
+      <DependentUpon>DxItemSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DXItemVirtualController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DXItemVirtualController.Designer.cs">
+      <DependentUpon>DXItemVirtualController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ProgressWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ProgressWaitForm.designer.cs">
+      <DependentUpon>ProgressWaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Process\SealerFilePath.cs" />
+    <Compile Include="Form\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgramConfig.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Process\ServerManager.cs" />
+    <Compile Include="Tools\Camera2D\FlyCapture\CamFlyCapture.cs" />
+    <Compile Include="Tools\Camera2D\ICameara2D.cs" />
+    <Compile Include="Tools\Camera2D\ImageData.cs" />
+    <Compile Include="Tools\Camera2D\Virtual\CamVirtual.cs" />
+    <Compile Include="Tools\Device\GoogleDrive\GoogleDrive.cs" />
+    <Compile Include="Tools\Device\PUC\PlcPuc.cs" />
+    <Compile Include="Tools\Util\BasicThread.cs" />
+    <Compile Include="Tools\Util\CommunityInterface.cs" />
+    <Compile Include="Tools\Util\FontSize.cs" />
+    <Compile Include="Tools\Util\Locale.cs" />
+    <Compile Include="Tools\Util\Log.cs" />
+    <Compile Include="Tools\Util\WamcError.cs" />
+    <Compile Include="Form\XtraFormSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\XtraFormSetting.Designer.cs">
+      <DependentUpon>XtraFormSetting.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form\DxItemDetailForm.resx">
+      <DependentUpon>DxItemDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DXItemExcel.resx">
+      <DependentUpon>DXItemExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DxItemSearchForm.resx">
+      <DependentUpon>DxItemSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DXItemVirtualController.resx">
+      <DependentUpon>DXItemVirtualController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\ProgressWaitForm.resx">
+      <DependentUpon>ProgressWaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Form\XtraFormSetting.resx">
+      <DependentUpon>XtraFormSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="credential.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\title_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_background_1496X836.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_icon_check box_off_32X32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_icon_check box_on_32X32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_icon_check-box_2_off_32X32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_icon_check-box_2_on_32X32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_avm_off_40X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_avm_on_40X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_camera_off_46X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_camera_on_46X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_gps_off_44X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_gps_on_44X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_hdfhd_off_48X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_hdfhd_on_48X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_mike_off_32X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_mike_on_32X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_recording_off_44X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_recording_on_44X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_sdcaed_off_32X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_sdcaed_on_32X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_setting_off_40X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status bar_icon_setting_on_40X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_start_icon_off_67X30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_start_icon_on_67X30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_start_icon_off_99X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_start_icon_on_99X44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_start_icon_off_40X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_start_icon_on_40X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\autoit_ci.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_icon_check-box_2_off_22X22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_icon_check-box_2_on_22X22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_arrow_button_off_bottom_18X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_arrow_button_off_left_18X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_arrow_button_off_right_18X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_arrow_button_off_top_18X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_arrow_button_on_bottom_18X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_arrow_button_on_left_18X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_arrow_button_on_right_18X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_arrow_button_on_top_18X18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_fail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_pass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_start_icon_off_20X20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_start_icon_on_20X20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_avis_sealer.ico" />
+    <None Include="Resources\sample\TD1.수배_35모0605.jpg" />
+    <None Include="Resources\sample\TD2.미납_269무3757.jpg" />
+    <None Include="Resources\sample\TD3.일반_62고4376.jpg" />
+    <None Include="Resources\machine_off.png" />
+    <None Include="Resources\machine_on.png" />
+    <None Include="Resources\test_off.png" />
+    <None Include="Resources\test_on.png" />
+    <None Include="Resources\search_off.png" />
+    <None Include="Resources\search_on.png" />
+    <None Include="Resources\spreadsheet.jpg" />
+    <None Include="Resources\sample\TD4.62고4376.jpg" />
+    <None Include="Resources\sample\TD5.35모0605.jpg" />
+    <None Include="Resources\sample\TD6.269무3757.jpg" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\GCBase_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\GenApi_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\libiomp5md.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\Log_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\MathParser_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\NodeMapData_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\Spinnakerd_v140.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\SpinnakerNET_v140.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\Spinnaker_v140.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\ucrtbase.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x64\XMLParser_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\GCBase_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\GenApi_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\libiomp5md.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\Log_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\MathParser_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\NodeMapData_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\Spinnakerd_v140.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\SpinnakerNET_v140.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\Spinnaker_v140.dll" />
+    <Content Include="Tools\Camera2D\FlyCapture\x86\XMLParser_MD_VC140_v3_0.dll" />
+    <Content Include="Tools\Util\AjinUtil.dll" />
+    <None Include="Resources\menu_start_icon_on_40X22.png" />
+    <None Include="Resources\menu_start_icon_off_40X22.png" />
+    <None Include="Resources\menu_start_icon_on_24X24.png" />
+    <None Include="Resources\menu_start_icon_off_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tools\Util\32bit\" />
+    <Folder Include="Tools\Util\64bit\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.Managed.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.Managed.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.AI.DirectML.1.15.4\build\Microsoft.AI.DirectML.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.AI.DirectML.1.15.4\build\Microsoft.AI.DirectML.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.AI.DirectML.1.15.4\build\Microsoft.AI.DirectML.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.AI.DirectML.1.15.4\build\Microsoft.AI.DirectML.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.DirectML.1.23.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.DirectML.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.DirectML.1.23.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.DirectML.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.DirectML.1.23.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.DirectML.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.DirectML.1.23.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.DirectML.targets'))" />
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+    <Error Condition="!Exists('..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.23.2\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets')" />
+  <Import Project="..\packages\Microsoft.AI.DirectML.1.15.4\build\Microsoft.AI.DirectML.targets" Condition="Exists('..\packages\Microsoft.AI.DirectML.1.15.4\build\Microsoft.AI.DirectML.targets')" />
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.DirectML.1.23.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.DirectML.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.DirectML.1.23.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.DirectML.targets')" />
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

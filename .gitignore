@@ -11,3 +11,4 @@
 /SealerInspector/.vs
 /SealerInspector/obj
 /SealerInspector/Tools/Camera2D
+/SealerInspector/Tools/Device/GoogleDrive/GoogleDrive.cs
